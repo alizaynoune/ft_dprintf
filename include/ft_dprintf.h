@@ -13,6 +13,7 @@
 # define _x	64
 # define _X	128
 # define _MOD	256
+# define _b	512
 
 # define _h	1
 # define _hh	2
@@ -47,7 +48,7 @@ typedef struct			s_data
 }				t_data;
 
 
-
+int	ft_printf(const char *format, ...);
 int	ft_dprintf(int fd, const char *format, ...);
 void	get_arg(t_data *d);
 #endif

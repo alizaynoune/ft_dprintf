@@ -3,16 +3,16 @@ INC = include/
 
 SRC = dprintf.c\
       print.c\
-      main.c
+ #     main.c
 OBJ = src/
-OBP = ./obj/
+OBP = ./objs/
 
 OBJS = $(addprefix $(OBJ), $(SRC))
 OBJL = $(addprefix $(OBP), $(SRC:.c=.o))
-all:
-	gcc $(OBJS) -L ./ -lft -I $(INC)
+test:
+	gcc $(OBJS) src/main.c -L ./ -lft -I $(INC)
 
-lib: $(OBP)
+all: $(OBP)
 	ar rc $(NAME) ./obj/*
 	ranlib $(NAME)
 
