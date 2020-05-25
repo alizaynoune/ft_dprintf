@@ -1,7 +1,7 @@
 ft_dprintf it's recod dprintf
 
 
-usage : ft_dprintf("%[flag][width][.precision][length]specifier)
+usage : ft_dprintf("%[flag][width][.precision][length]specifier")
 
 	flag : [0 + - # space]
 	width : [number]
