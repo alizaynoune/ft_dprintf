@@ -47,8 +47,6 @@ typedef struct			s_data
 	t_width_precision	wid_pre;
 }				t_data;
 
-
-int	ft_printf(const char *format, ...);
 int	ft_dprintf(int fd, const char *format, ...);
 void	get_arg(t_data *d);
 void	_flags(t_data *d);

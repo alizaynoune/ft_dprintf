@@ -38,7 +38,6 @@ void	read_format(t_data *d)
 }
 
 int	ft_dprintf(int fd, const char *format, ...)
-//int	ft_printf(const char *format, ...)
 {
 	t_data		*d;
 

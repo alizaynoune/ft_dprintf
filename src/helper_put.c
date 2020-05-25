@@ -42,8 +42,8 @@ void	_fix_p(t_data *d, char **str)
 {
 	if (*str[0] == '0')
 	{
-		d->wid_pre.width = 0;
 		d->wid_pre.precision = 0;
+		d->flag -= (d->flag & _zero);
 		d->flag -= (d->flag & _plus);
 		d->flag -= (d->flag & _space);
 		*str = "(nil)";

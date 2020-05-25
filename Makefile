@@ -1,4 +1,4 @@
-NAME = libdprintf.a
+NAME = libftdprintf.a
 GCC = gcc -Wall -Werror -Wextra -c
 OBJS = objs/
 

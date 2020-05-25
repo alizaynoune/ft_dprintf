@@ -1,71 +1,92 @@
 #!/bin/bash
-cpecif=$@
+specifier=$@
 char="ali test"
-flag="0 + - # "
-flag2="0 + - # ."
-len="l h ll hh"
-gcc main.c -L ../ -ldprintf -I ../includes -o dprintf
-if [ "${cpecif}" == "" ]
+flag1=("0" "+" "-" "#" "N")
+flag2=("0" "+" "-" "#" "S" "N")
+dot=("." "0")
+length=("0" "l" "ll" "h" "hh")
+gcc main.c -L ../ -lftdprintf -I ../includes -o dprintf
+echo "" >error
+if [ "${specifier}" == "" ]
 then
-	cpecif="c s d i o u x X p"
+	specifier="c s d i o u x X p"
 fi
-for f in ${cpecif}
+
+for specif in ${specifier}
 do
-	for l in ${len}
+	for len in ${length[@]}
 	do
-		for fl in ${flag}
+		if [ "$len" == "0" ]
+		then
+			len=""
+		fi
+		for preci in {0..4}
 		do
-			for fl2 in ${flag2}
+			for dot_ in ${dot[@]}
 			do
-				for i in {0..30}
+				for wid in {0..4}
 				do
-					if [ "${f}" != "s" ]
+					nb=$(( $wid * 99999999 * $wid - ($wid * 200)))
+					if [ $wid == 4 ]
 					then
-						if [ "${f}" == "c"  ]
-						then
-							l=""
-							if [ "${i}" == "10" ]
-							then
-								i=11
-							fi
-							if [ "${i}" == "0" ]
-							then
-								i=1
-							fi
-						fi
-						./dprintf "d" "% ${fl}${fl2}${i}${l}${f}" "${i}" 0>diff
-						line=$(head -1 diff)
-						line2=$(tail -1 diff)
-						if [ "${line}" != "${line2}" ]
-						then
-							echo -e "\e[31m \"% ${fl}${fl2}${i}${l}${f}\" ,${i}\e[0m"
-						else
-							echo -e "\e[32m \"% ${fl}${fl2}${i}${l}${f}\" ,${i}\e[0m"
-
-						fi
+						wid=""
 					fi
-					#sleep 0.001
-					if [ "${f}" == "s" ] || [ "${f}" == "p" ]
+					if [ "${preci}" == "4" ]
 					then
-						if [ "${f}" == "s" ]
-						then
-							l=""
-						fi
-						./dprintf "s" "% ${fl}${fl2}${i}${l}${f}" "${char}" 0>diff
-						line=$(head -1 diff)
-						line2=$(tail -1 diff)
-						if [ "${line}" != "${line2}" ]
-						then
-							echo -e "\e[31m \"% ${fl}${fl2}${i}${l}${f}\" ,${char}\e[0m"
-						else
-							echo -e "\e[32m \"% ${fl}${fl2}${i}${l}${f}\" ,${char}\e[0m"
-
-						fi
+						preci=""
 					fi
-					#sleep 0.001
+					for f2 in ${flag2[@]}
+					do
+						if [ "${f2}" == "N" ]
+						then
+							f2=""
+						fi
+						if [ "$f2" == "S" ]
+						then
+							f2=" "
+						fi
+						for f1 in ${flag1[@]}
+						do
+							if [ "${f1}" == "N" ]
+							then
+								f1=""
+							fi
+							if [ "${specif}" == "s" ] || [ "$specif" == "p" ]
+							then
+								is="s"
+								nb="tasssst"
+							else
+								is="d"
+							fi
+							if [ "${dot_}" == "0" ]
+							then
+								dot_=""
+							fi
+							./dprintf "${is}" "test %${f2}${f1}${preci}${dot_}${wid}${len}${specif} end" "${nb}" 1>diff
+							line=$(head -1 diff)
+							line2=$(tail -1 diff)
+							if [ "${line}" != "${line2}" ]
+							then
+								echo -e "\e[31m \"test %${f2}${f1}${preci}${dot_}${wid}${len}${specif}\" "${nb}"  [KO]\e[0m"
+								echo "\"test %${f2}${f1}${preci}${dot_}${wid}${len}${specif} end\" "${nb}"" >> error
+								echo "   your out :[$line]" >>error
+								echo "   sys out  :[$line2]" >>error
+							else
+								echo -e "\e[32m \"test %${f2}${f1}${preci}${dot_}${wid}${len}${specif} end\" "${nb}"  [OK]\e[0m"
+							fi
+							#sleep 0.1
+						done
+					done
 				done
 			done
 		done
+		if [ "$specif" == "s" ] || [ "$specif" == "c" ]
+		then
+			break
+		fi
 	done
+
+
 done
+
 rm -f diff
