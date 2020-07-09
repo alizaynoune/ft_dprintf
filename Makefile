@@ -1,5 +1,5 @@
 NAME =			libftdprintf.a
-GCC = 			gcc -Wall -Werror -Wextra -c
+GCC = 			gcc -g -Wall -Werror -Wextra -c
 OBJS = 			objs/
 
 #*
@@ -71,7 +71,8 @@ LIBFT_MEM = 		ft_memalloc.c				\
 	    		ft_memcpy.c				\
 	    		ft_memdel.c				\
 	    		ft_memmove.c				\
-	    		ft_memset.c
+	    		ft_memset.c				\
+			ft_memdynamic.c
 
 LIBFT_PUT = 		ft_putchar.c				\
 	    		ft_putchar_fd.c				\

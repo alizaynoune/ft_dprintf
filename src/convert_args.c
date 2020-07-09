@@ -38,7 +38,7 @@ char	*_unsigned_str(t_data *d, unsigned long long int value)
 	nbr = value;
 	while ((nbr /= 10))
 		i++;
-	if (!(str = (char *)ft_memalloc(i + 1)))
+	if (!(str = (char *)ft_memalloc(i + 2)))
 		_exit_error(d);
 	while (i >= 0)
 	{
@@ -58,7 +58,7 @@ char	*_base_str(t_data *d, unsigned long long int v_, char *s_, size_t base)
 	nbr = v_;
 	while ((nbr /= base))
 		i++;
-	if (!(str = (char *)ft_memalloc(i + 1)))
+	if (!(str = (char *)ft_memalloc(i + 2)))
 		_exit_error(d);
 	while (i >= 0)
 	{
