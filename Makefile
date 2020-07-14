@@ -109,7 +109,8 @@ LIBFT_STR = 		ft_strcat.c				\
 	    		ft_strsplit.c				\
 	    		ft_strsub.c				\
 	    		ft_strtrim.c				\
-	    		split_by_str.c
+	    		split_by_str.c				\
+			ft_nstrjoin.c
 
 LIBFT_FREE = 		free_rev.c				\
 	     		free_tab_char.c				\

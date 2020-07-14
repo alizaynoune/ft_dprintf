@@ -21,6 +21,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
 
 /*
 *** macros
@@ -163,6 +164,7 @@ char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_strndup(const char *str, char c);
 char			**ft_split_by_str(char *str, char *c);
+char			*ft_nstrjoin(size_t n, ...);
 
 /*
 *** functions free
