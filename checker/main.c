@@ -10,18 +10,21 @@ int	main(int ac, char **av)
 	int	fd;
 	char	*str;
 	long long int value;
+	long long int prec;
 	fd = 1;
 	if (ac >= 4 && av[1][0] == 'd')
 	{
-		str = av[2];
-		value = atoll(av[3]);
-		dprintf(fd, "[ret %d]\n",ft_dprintf(fd, str, value));
+		prec = atoll(av[2]);
+		str = av[3];
+		value = atoll(av[4]);
+		dprintf(fd, "[ret %d]\n",ft_dprintf(fd, str, prec , value));
 		dprintf(fd, "[ret %d]\n",dprintf(fd, str, value));
 	}
 	if (ac >= 4 && av[1][0] == 's')
 	{
-		str = av[2];
-		dprintf(fd, "[ret %d]\n",ft_dprintf(fd, str, av[3]));
-		dprintf(fd, "[ret %d]\n",dprintf(fd, str, av[3]));
+		prec = atoll(av[2]);
+		str = av[3];
+		dprintf(fd, "[ret %d]\n",ft_dprintf(fd, str, prec, av[3]));
+		dprintf(fd, "[ret %d]\n",dprintf(fd, str, pre, av[3]));
 	}
 }

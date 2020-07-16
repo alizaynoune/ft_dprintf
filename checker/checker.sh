@@ -64,7 +64,7 @@ do
 							then
 								dot_=""
 							fi
-							./dprintf "$is" "test %${f2}${f1}${preci}${dot_}${wid}${preci}${len}${specif} end" "$nb" 1>diff
+							./dprintf "$is" "test %${f2}${f1}*${dot_}${wid}${preci}${len}${specif} end" "${preci}" "$nb" 1>diff
 							line=$(head -1 diff)
 							line2=$(tail -1 diff)
 							if [ "$line" != "$line2" ]
