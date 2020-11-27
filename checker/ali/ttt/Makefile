@@ -6,7 +6,7 @@
 #    By: gfielder <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/28 21:19:45 by gfielder          #+#    #+#              #
-#    Updated: 2019/07/08 22:40:24 by gfielder         ###   ########.fr        #
+#    Updated: 2020/11/27 13:36:02 by alzaynou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,9 @@ TEST_DEFINES=-D OUT_ACTUAL="\"$(TEST_OUT_ACTUAL)\"" \
 			 -D LEAKS_TEST_CMD="$(LEAKS_TEST_CMD)" \
 			 -D FORCE_TEST_LOG=$(FORCE_TEST_LOG)
 ifeq ($(USE_SEPARATE_LIBFT),1)
+
+LIBFT_DIR_PATH = ../../
+LIBFT_NAME = libftdprintf.a
 LIB=$(LIBFT_DIR_PATH)/$(LIBFT_NAME)
 else
 LIB=
