@@ -5,7 +5,7 @@ flag1=("0" "+" "-" "#" "N")
 flag2=("0" "+" "-" "#" "S" "N")
 dot=("." "0")
 length=("0" "l" "ll" "h" "hh")
-gcc main.c -L ../ -lftprintf -I ../includes -o dprintf
+gcc main.c -L ../ -lftdprintf -I ../includes -o dprintf
 echo "" >error
 if [ "$specifier" == "" ]
 then

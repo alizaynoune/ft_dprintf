@@ -6,7 +6,7 @@
 /*   By: alzaynou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:16:38 by alzaynou          #+#    #+#             */
-/*   Updated: 2020/10/16 17:51:24 by alzaynou         ###   ########.fr       */
+/*   Updated: 2020/11/27 11:58:32 by alzaynou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@
 # define SPACE_	16
 # define DOT_	32
 
-typedef struct			s_width_precision
+# define _OUT   1
+# define _ERR   2
+
+typedef struct			s_widpre
 {
 	size_t				width;
 	size_t				precision;
-}						t_width_precision;
+}						t_widpre;
 
 typedef struct			s_data
 {
@@ -56,7 +59,7 @@ typedef struct			s_data
 	int					flag;
 	short				specif;
 	short				length;
-	t_width_precision	wid_pre;
+	t_widpre			*wid_pre;
 }						t_data;
 
 int						ft_dprintf(int fd, const char *format, ...);
@@ -87,4 +90,5 @@ void					exit_error_(t_data *d);
 void					reset_data(t_data *d);
 size_t					ato_unsint_(const char *str);
 int						ft_printf(const char *format, ...);
+
 #endif
